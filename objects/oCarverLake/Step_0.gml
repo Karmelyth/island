@@ -1,11 +1,13 @@
 /// @description Insert description here
 // You can write your code in this editor
+if instance_exists(carver_parent){exit}
 
 var _i = 0;
-do{ // yeah this is taking too long
+if csb >= 1 do{ // its awesome now :)
+	csb = 0;
 	_i++;
 		
-	if point_distance(xstart, ystart, x, y) >= grid_scale * max_margin{
+	if carve_margin > 0 && point_distance(xstart, ystart, x, y) >= grid_scale * carve_margin{
 		var _dir = 180;
 		if direction > 45{
 			_dir += 90;
@@ -21,22 +23,16 @@ do{ // yeah this is taking too long
 		}
 		direction = _dir;
 	}else{
-		if irandom(1) = 0{
+		if !irandom(9) = 0{
 			direction += choose(-90, 90);	
 		}
 	
 		// Placing the floors:
 		
-		if goal = maxgoal || goal <= 1{
-			var _size =  2,
-				_edge = 1 + irandom(1);
-			if _size <= 2 _edge = _size - 1;
-			if irandom(3) = 0 _size += irandom(1);
-			goal -= carve_circle(_size, _edge, biome);
+		if carve_goal > 0{
+			if outline_size >= 0 goal_total += carve_circle(carve_width + outline_size * 2, carve_height + outline_size * 2, carve_round + outline_size * 2 + 1, biome_replace);
+			carve_goal -= carve_circle(carve_width, carve_height, carve_round, carve_biome);
 		}
-		
-		carve_room(0, 0, biome);
-		goal--;
 		
 	}
 
@@ -46,4 +42,9 @@ do{ // yeah this is taking too long
 	x += lengthdir_x(grid_scale, direction);
 	y += lengthdir_y(grid_scale, direction);
 
-}until (goal <= 0 || _i >= 10)
+if carve_goal <= 0{
+	instance_destroy(self, true);
+	exit;
+}
+}until (carve_goal <= 0 || _i >= carve_speed)
+csb += carve_speed;

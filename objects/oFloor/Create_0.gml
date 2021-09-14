@@ -1,7 +1,6 @@
-/// @description Insert description here
-// You can write your code in this editor
-
 image_speed = 0;
 
-is_water = true;
-island_index = -1;
+parent = -4;	   // Carver instance that created this floor tile
+island_index = -4; // Island this floor tile belongs to
+biome = -4;        // Biome of this floor
+priority = -4;

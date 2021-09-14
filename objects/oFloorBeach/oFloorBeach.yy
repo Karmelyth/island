@@ -8,8 +8,8 @@
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": {
-    "name": "oFloor",
-    "path": "objects/oFloor/oFloor.yy",
+    "name": "oFloorSolid",
+    "path": "objects/oFloorSolid/oFloorSolid.yy",
   },
   "physicsObject": false,
   "physicsSensor": false,
@@ -29,8 +29,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Floors",
-    "path": "folders/Objects/Floors.yy",
+    "name": "Solid Tiles",
+    "path": "folders/Objects/Floors/Solid Tiles.yy",
   },
   "resourceVersion": "1.0",
   "name": "oFloorBeach",

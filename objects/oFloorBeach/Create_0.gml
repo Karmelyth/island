@@ -1,4 +1,3 @@
-/// @description Insert description here
-// You can write your code in this editor
+event_inherited();
 
-event_inherited()
+biome = biome_beach;

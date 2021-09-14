@@ -8,8 +8,8 @@
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": {
-    "name": "oFloor",
-    "path": "objects/oFloor/oFloor.yy",
+    "name": "oFloorWater",
+    "path": "objects/oFloorWater/oFloorWater.yy",
   },
   "physicsObject": false,
   "physicsSensor": false,
@@ -29,8 +29,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Floors",
-    "path": "folders/Objects/Floors.yy",
+    "name": "Water Tiles",
+    "path": "folders/Objects/Floors/Water Tiles.yy",
   },
   "resourceVersion": "1.0",
   "name": "oFloorLake",

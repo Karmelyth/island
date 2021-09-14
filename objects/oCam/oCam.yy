@@ -35,6 +35,8 @@
   },
   "resourceVersion": "1.0",
   "name": "oCam",
-  "tags": [],
+  "tags": [
+    "important",
+  ],
   "resourceType": "GMObject",
 }

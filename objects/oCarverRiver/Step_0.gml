@@ -1,55 +1,27 @@
 /// @description Insert description here
 // You can write your code in this editor
+if instance_exists(carver_parent){exit}
 
 var _i = 0;
-do{ // yeah this is taking too long
+if csb >= 1 do{ // its awesome now :)
+	csb = 0;
 	_i++;
-	if point_distance(xstart, ystart, x, y) >= grid_scale * max_margin{
-		var _dir = 180;
-		if direction > 45{
-			_dir += 90;
-			if direction > 135{
-				_dir += 90;
-				if direction > 215{
-					_dir += 90;
-					if direction > 305{
-						_dir += 90;	
-					}
-				}
-			}
-		}
-		direction = _dir;
-	}else{
-		
-		if floor_check(x, y) && hasmet = false{
-			hasmet = true;
-			base_direction = direction;
-		}
-		
-		if hasmet = true{
-			
-			if irandom(4) = 0{
-				var _d = choose(-1, 1);
-				dir += _d;
-				dir = clamp(dir, -1, 1);
-				direction = base_direction + 90 * dir;	
-			}
-		}
-
-		// Placing the floors:	
-		carve_circle(1, 1, biome);
-		
-		if hasmet = true && !place_meeting(x, y, island){
-			goal--;
-		}
-	}
-
-	if x <= grid_scale * 2 || x >= room_width - grid_scale * 2 || y <= grid_scale * 2 || y >= room_height - grid_scale * 2{
-		instance_destroy();
+	
+	if chance(carve_turnchance){
+		direction += 18 * choose( 1, 1, 1, 1, -1, -1, -1);
 	}
 	
 	x += lengthdir_x(grid_scale, direction);
-	y += lengthdir_y(grid_scale, direction);
+	y += lengthdir_y(grid_scale, direction);	
+	
+	// Placing the floors:
+	if outline_size >= 0 goal_total += carve_room(carve_width + outline_size, carve_height + outline_size, biome_replace);
+	carve_goal -= carve_room(carve_width, carve_height, carve_biome);
 
-}until (goal <= 0 || _i >= 1)
-if goal <= 0 instance_destroy();
+	if !place_meeting(x + lengthdir_x(carve_width * grid_scale, direction), y + lengthdir_y(carve_width * grid_scale, direction), oFloor){
+		instance_destroy(self, true);
+		exit;
+	}
+
+}until (_i >= carve_speed)
+csb += carve_speed;

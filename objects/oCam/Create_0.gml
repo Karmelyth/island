@@ -23,10 +23,23 @@ surface_resize(application_surface, window_size, window_size);
 image_xscale = .1;
 image_yscale = .1;
 
-zoom = 20; 		   // how deep the camera is zoomed in, multiplier
-zoom_factor = .4;  // how fast to scroll
-cam_speed   = 15;  // how fast the camera moves
-zoomval = 0;       // zoom amount to change
+CamTarget         = self;   // what to follow
+cam_speed		  = 1.5;    // how fast the camera moves
+cam_smoothing	  = 500;    // camera smoothing, keep above 0
+softborder_factor = .00060; // How harsh the pushback from being outside the map is
+camborder_factor  = 1.00;   // size factor for map_border -> cam_border
+
+zoom = 70; 		   // how deep the camera is zoomed in, multiplier
+zoom_factor = 3;   // amount of "zoom intervalls"
+zoom_speed  = .80; // how fast to zoom in, set to 0-1
+zoom_max    = 70;  // maximum amount of zoom allowed
+zoom_min    = 1;   // minimum amount of zoom allowed
+zoomval     = 0;   // zoom amount to change
+xpos = 0;
+ypos = 0;
+
 turnval = 0;       // turn amonut to change
-turn_factor = 1;   // how fast to turn
 cam_direction = 0; // where the camera is directed
+
+// Setting up macros:
+#macro cam_target oCam.CamTarget
